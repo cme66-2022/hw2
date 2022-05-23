@@ -1,0 +1,45 @@
+Name: Christopher Ellis
+
+The 2 questions that need to be answered are answered at the bottom of this file
+
+The proper login credentials to log into the ftp server are provided below
+
+username: cs472
+password: hw2ftp
+
+Starting the program:
+To start the program you will need to open the terminal or use your terminal window in pycharm and type the below command.
+"python3 Client.py"
+
+Once the program has started it will welcome you after connecting to the server and it will request that you give it a username credential and a password.
+This will be done in separate steps so please follow the prompts properly
+if you enter the credentials properly, you will be prompted with a list of commands that can be used and asked which of them you would like to perform.
+
+Running Commands
+to perform one of the commands you will need to enter the number of the command you would like to perform. Entering anything else will the error message below.
+"That command is not recognized"
+
+Some commands such as Help, "Display Operating System Version", "Print Working Directory", and others will need no arguments given to them
+
+Other commands will require a user to give input such as a full file path or a full directory path.
+For commands that require user input, the user will be prompted to give exactly what is needed along with examples
+
+1.Think about the conversation of FTP – how does each side validate the other (on the
+connection AND data ports – think of each separately)? How do they trust that they’re
+getting a connection from the right person?
+
+1-Answer:
+There are several things that play into ensuring that the connection is made with the right person.
+For the connection, the server validates the client by checking the client credentials before allowing any interaction.
+In addition, both sides consistently check each other through the messages that are sent once the control socket is established.
+For the data port the validation comes in a couple ways. For passive connections, the server sends what port and hostname for the client
+to use and the client connects to that specific and for active data port connections the client binds to a specific
+port and lets the server know what port to listen on. In this way they communicate directly by sending each other, in a way, the network credentials to use.
+
+2.How does your client know that it’s sending the right commands in the right order? How
+does it know the sender is trustworthy?
+
+2-Answer:
+The client knows it is sending the commands in the right order because of sliding window protocols.
+Each of the PDUs are sent with a sequence number so that the server knows what order they should be in.
+What the client sends out of order the server will put back in order upon reception.
